@@ -2,12 +2,23 @@ const express = require("express");
 const bodyparser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
-const dburl = "mongodb+srv://Uditya:Requirepass-82@cluster0.srwbhmx.mongodb.net/test";
-mongoose.connect(dburl+"dbtest");
+const dburl = "mongodb+srv://udityaprakash01:sAMc1FmiB4wWnxAx@cluster0.za5wk8j.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(dburl+"dbtest",(err)=>{
+    if(err){
+        console.log(err);
+    }else{
+        console.log("success");
+    }
+});
+const se = {
+    hel: "you know me well",
+    jake:23,
+    heiht:"Dace"
+}
 app.get("/",(req,res)=>{
-    res.send('page initialised');
+    res.json(se);
 });
 
-app.listen(process.env.PORT|| 3000 ,()=>{
+app.listen(3000 ,()=>{
     console.log("server started");
 });
