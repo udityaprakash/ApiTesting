@@ -11,9 +11,8 @@ mongoose.connect(dburl+"dbtest",(err)=>{
     }
 });
 const se = {
-    hel: "you know me well",
-    jake:23,
-    heiht:"Dace"
+    status: "Success",
+    msg:"Yeh made my first API"
 }
 app.get("/",(req,res)=>{
     res.json(se);
