@@ -28,7 +28,7 @@ const ClientSchema = new mongoose.Schema({
     mobile:Number
 });
 
-var user = new mongoose.model('UserDB',ClientSchema);
+var user = new mongoose.model('APItest',ClientSchema);
 const send = {
     status: {code: 200,msg:"Ok Status"},
     msg:"Api is ready to Serve"
