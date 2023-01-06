@@ -5,8 +5,10 @@ const mongoose = require("mongoose");
 const hash = require("md5");
 const dburl = "mongodb+srv://udityaprakash01:sAMc1FmiB4wWnxAx@cluster0.za5wk8j.mongodb.net/?retryWrites=true&w=majority";
 
+app.use(bodyparser.json());
+
 // const dburl = "mongodb://localhost:27017";
-app.use(bodyparser.urlencoded({extended:true}));
+app.use(bodyparser.urlencoded({extended:false}));
 function DBconnection(){
     mongoose.connect(dburl,(err)=>{
         if(err){
@@ -39,10 +41,13 @@ app.get("/register",(req,res)=>{
     res.json({
         status:"all set at register Page"
     });
-}).post("/register",async (req,res)=>{
-    console.log(typeof(req.body.name)+" "+req.body.name+"\n"+typeof(req.body.email)+" "+req.body.email+"\n");
-
-    if(typeof(req.body.name)!='undefined' && typeof( req.body.password)!='undefined' && typeof( req.body.email)!='undefined' && typeof( req.body.mobile)!='undefined'){
+});
+app.post("/register",async (req,res)=>{
+    // console.log(typeof(req.body.name)+" "+req.body.name+"\n"+typeof(req.body.email)+" "+req.body.email+"\n");
+    console.log(req.body);
+    if(typeof(req.body.name)!='undefined' 
+    && typeof( req.body.password)!='undefined' && typeof( req.body.email)!='undefined' 
+    && typeof( req.body.mobile)!='undefined'){
         var info = new user({
             name:req.body.name,
             password:hash(req.body.password),
